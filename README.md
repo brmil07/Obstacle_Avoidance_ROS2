@@ -23,7 +23,7 @@ ros2 run cpp_obstacle_avoidance cpp_obstacle_avoidance
 * To run `py_obstacle_avoidance` executable
 
 ```bash
-ros2 run py_topic py_obstacle_avoidance py_obstacle_avoidance
+ros2 run py_obstacle_avoidance py_obstacle_avoidance
 ```
 
 </br>
