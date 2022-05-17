@@ -35,10 +35,7 @@
 #define CENTER 0
 #define LEFT   1
 #define RIGHT  2
-#define FLEFT  3
-#define FRIGHT 4
-#define TLEFT  5
-#define TRIGHT 6
+
 
 #define LINEAR_VELOCITY  0.25
 #define ANGULAR_VELOCITY 0.50
@@ -69,7 +66,7 @@ private:
   double prev_robot_pose_;
   double scan_data_[3];
 
-  int robot_pos_state_;
+  char const *robot_pos_state_;
 
   float left_side;
   float right_side;
