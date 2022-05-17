@@ -4,7 +4,7 @@
 
 ## About
 
-This Repository contains some basic ROS2 examples.
+This Repository contains some ROS2 examples of obstacle avoidance algorithms for robot movement implementation.
 
 </br>
 
