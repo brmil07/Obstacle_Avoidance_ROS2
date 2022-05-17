@@ -202,42 +202,43 @@ void Turtlebot3Drive::update_callback()
   }
 
   RCLCPP_INFO(this->get_logger(), "scan data at front: %lf ", front_side_min);
+  printf("[STATE INFO]:  : [%s]\n",robot_pos_state_);
 }
 
 void Turtlebot3Drive::tb3_move_backward()
 {
   update_cmd_vel(-1.0 * LINEAR_VELOCITY, 0.0); 
-  robot_pos_state_ = -1;
+  robot_pos_state_ = "Moving Backward";
 }
 
 void Turtlebot3Drive::tb3_full_stop()
 {
   update_cmd_vel(0.0, 0.0); 
-  robot_pos_state_ = 0;
+  robot_pos_state_ = "Full Stop";
 }
 
 void Turtlebot3Drive::tb3_find_wall()
 {
   update_cmd_vel(LINEAR_VELOCITY, 0.0); 
-  robot_pos_state_ = 1;
+  robot_pos_state_ = "Finding The Wall";
 }
 
 void Turtlebot3Drive::tb3_turn_left()
 {
   update_cmd_vel(0.0, ANGULAR_VELOCITY);
-  robot_pos_state_ = 2;
+  robot_pos_state_ = "Turning Left";
 }
 
 void Turtlebot3Drive::tb3_turn_right()
 {
   update_cmd_vel(0.0, -1 * ANGULAR_VELOCITY);
-  robot_pos_state_ = 3;
+  robot_pos_state_ = "Turning Right";
 }
 
 void Turtlebot3Drive::tb3_follow_the_wall()
 {
   update_cmd_vel(LINEAR_VELOCITY, 0.0); 
-  robot_pos_state_ = 4;
+  robot_pos_state_ = "Following The Wall";
 }
 
 /*******************************************************************************
