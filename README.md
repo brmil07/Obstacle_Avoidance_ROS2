@@ -8,7 +8,7 @@ This Repository contains some basic ROS2 examples.
 
 </br>
 
-### Topic
+### Obstacle Avoidance Algorithm
 
 #### C++
 
