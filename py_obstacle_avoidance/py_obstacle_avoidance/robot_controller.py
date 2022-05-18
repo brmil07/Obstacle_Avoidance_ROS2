@@ -259,7 +259,9 @@ class Controller(Node):
     # Send velocity command to the robot
     self.publisher_.publish(msg)  
     
- 
+    # Send robot state information in terminal
+    self.get_logger().info('Robot State: "%s"' % self.wall_following_state)
+    
 def main(args=None):
  
     # Initialize rclpy library
