@@ -55,9 +55,6 @@ set(dependencies
 add_executable(cpp_obstacle_avoidance src/cpp_obstacle_avoidance.cpp)
 ament_target_dependencies(cpp_obstacle_avoidance ${dependencies})
 
-# add_executable(minimal_subscriber src/high_level_controller.cpp)
-# ament_target_dependencies(minimal_subscriber rclcpp std_msgs geometry_msgs sensor_msgs visualization_msgs)
-
 # Install
 install(TARGETS 
   cpp_obstacle_avoidance
