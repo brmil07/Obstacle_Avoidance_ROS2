@@ -15,7 +15,6 @@
 // Authors: Taehun Lim (Darby), Ryan Shim
 
 #include "turtlebot3_drive.hpp"
-
 #include <memory>
 
 using namespace std::chrono_literals;
