@@ -85,7 +85,7 @@ void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr
   range_min = msg->range_max; 
   range_max = msg->range_min;
 
-  float crashed_min = 0.2;
+  float crashed_min = 0.25;
   side_min = 3.5;
 
   front_side_min = side_min;
@@ -160,36 +160,35 @@ void Turtlebot3Drive::update_cmd_vel(double linear, double angular)
 void Turtlebot3Drive::update_callback()
 {
   
-  double distance_min = 0.25;
+  double distance_min = 0.15;
   double distance_test = 0.4;
 
-  if (!crashed){
-    if (front_side_min > distance_min){
-        
-        if (front_side_min > distance_test && front_left_side_min > distance_test && front_right_side_min > distance_test){
-          tb3_find_wall();
-        }
-        else if (front_side_min < distance_test && front_left_side_min > distance_test && front_right_side_min > distance_test){
-          tb3_turn_left(); 
-        }
-        else if (front_side_min > distance_test && front_left_side_min > distance_test && front_right_side_min < distance_test){
-          tb3_turn_left(); 
-        }
-        else if (front_side_min > distance_test && front_left_side_min < distance_test && front_right_side_min > distance_test){
-          tb3_turn_right(); 
-        }
-        else if (front_side_min < distance_test && front_left_side_min > distance_test && front_right_side_min < distance_test){
-          tb3_turn_left(); 
-        }
-        else if (front_side_min < distance_test && front_left_side_min < distance_test && front_right_side_min > distance_test){
-          tb3_turn_right(); 
-        }  
-        else if (front_side_min < distance_test && front_left_side_min < distance_test && front_right_side_min < distance_test){
-          tb3_turn_left(); 
-        }     
-        else if (front_side_min > distance_test && front_left_side_min < distance_test && front_right_side_min < distance_test){
-          tb3_turn_left(); 
-        }          
+  if (front_side_min > distance_min){
+    if (!crashed){
+      if (front_side_min > distance_test && front_left_side_min > distance_test && front_right_side_min > distance_test){
+        tb3_find_wall();
+      }
+      else if (front_side_min < distance_test && front_left_side_min > distance_test && front_right_side_min > distance_test){
+        tb3_turn_left(); 
+      }
+      else if (front_side_min > distance_test && front_left_side_min > distance_test && front_right_side_min < distance_test){
+        tb3_turn_left(); 
+      }
+      else if (front_side_min > distance_test && front_left_side_min < distance_test && front_right_side_min > distance_test){
+        tb3_turn_right(); 
+      }
+      else if (front_side_min < distance_test && front_left_side_min > distance_test && front_right_side_min < distance_test){
+        tb3_turn_left(); 
+      }
+      else if (front_side_min < distance_test && front_left_side_min < distance_test && front_right_side_min > distance_test){
+        tb3_turn_right(); 
+      }  
+      else if (front_side_min < distance_test && front_left_side_min < distance_test && front_right_side_min < distance_test){
+        tb3_turn_left(); 
+      }     
+      else if (front_side_min > distance_test && front_left_side_min < distance_test && front_right_side_min < distance_test){
+        tb3_turn_left(); 
+      }          
     }
     else {
       tb3_move_backward();
