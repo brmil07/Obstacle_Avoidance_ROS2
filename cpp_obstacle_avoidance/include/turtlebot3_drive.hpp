@@ -21,6 +21,7 @@
 #include <stdint.h>
 #include <vector>
 #include <algorithm>
+#include <memory>
 
 #include <geometry_msgs/msg/twist.hpp>
 #include <nav_msgs/msg/odometry.hpp>
