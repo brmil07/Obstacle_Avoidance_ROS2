@@ -121,8 +121,8 @@ class Controller(Node):
          
     # Set turning speeds (to the left) in rad/s 
     # These values were determined by trial and error.
-    self.turning_speed_wf_fast = 1.0  # Fast turn
-    #self.turning_speed_wf_slow = 0.5 # Slow turn
+    self.turning_speed_wf_fast = 0.5  # Fast turn
+    #self.turning_speed_wf_slow = 0.2 # Slow turn
  
     # Wall following distance threshold.
     # We want to try to keep within this distance from the wall.
@@ -206,8 +206,8 @@ class Controller(Node):
     d = self.dist_thresh_wf
     e = self.dist_too_close_to_wall
 
-    if not self.crashed: 
-      if self.front_dist > e and self.rightfront_dist > e and self.right_dist > e:
+    if self.front_dist > e and self.rightfront_dist > e and self.right_dist > e:
+      if not self.crashed: 
         if self.front_dist > d and self.leftfront_dist > d and self.rightfront_dist > d:
           self.wall_following_state = "search for wall"
           msg.linear.x = self.forward_speed
@@ -251,6 +251,7 @@ class Controller(Node):
       else :
         self.wall_following_state = "move backward"
         msg.linear.x = -1.0
+        msg.angular.z = 0.0
 
     else:
       msg.angular.x = 0.0
