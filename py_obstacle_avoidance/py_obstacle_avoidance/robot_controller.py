@@ -150,11 +150,6 @@ class Controller(Node):
     self.follow_wall()
     
  
-  def scan_callback(self, msg):
-    """
-    This method gets called every time a LaserScan message is 
-    received on the '/demo/laser/out' topic 
-    """
     # Read the laser scan data that indicates distances
     # to obstacles (e.g. wall) in meters and extract
     # 5 distinct laser readings to work with.
@@ -168,7 +163,13 @@ class Controller(Node):
     #self.front_dist = msg.ranges[0]
     #self.rightfront_dist = msg.ranges[315]
     #self.right_dist = msg.ranges[270]
-
+ 
+  def scan_callback(self, msg):
+    """
+    This method gets called every time a LaserScan message is 
+    received on the '/demo/laser/out' topic 
+    """
+    
     self.left_dist = min(msg.ranges[60:100])
     self.leftfront_dist = min(msg.ranges[30:60])
     
@@ -186,7 +187,11 @@ class Controller(Node):
         self.crashed = True
       else :
         self.crashed = False  
-             
+   
+    # Logic for following the wall
+    # >d means no wall detected by that laser beam
+    # <d means an wall was detected by that laser beam 
+   
   def follow_wall(self):
     """
     This method causes the robot to follow the boundary of a wall.
@@ -200,9 +205,6 @@ class Controller(Node):
     msg.angular.y = 0.0
     msg.angular.z = 0.0        
  
-    # Logic for following the wall
-    # >d means no wall detected by that laser beam
-    # <d means an wall was detected by that laser beam
     d = self.dist_thresh_wf
     e = self.dist_too_close_to_wall
 
