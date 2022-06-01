@@ -85,8 +85,8 @@ class Controller(Node):
  
     # Initialize the LaserScan sensor readings to some large value
     # Values are in meters.
-    self.max_distance = 8.0
-    self.crashed_min = 0.2
+    self.max_distance = 3.5
+    self.crashed_min = 0.30
     self.crashed = False
 
     self.left_dist = self.max_distance # Left
@@ -129,7 +129,7 @@ class Controller(Node):
     self.dist_thresh_wf = 0.45 # in meters  
  
     # We don't want to get too close to the wall though.
-    self.dist_too_close_to_wall = 0.25 # in meters
+    self.dist_too_close_to_wall = 0.20 # in meters
 
   # def logger_callback(self):
   #   self.get_logger().info('Publishing: "%lf"' % front_distance)
