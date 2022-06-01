@@ -20,10 +20,10 @@ ros2 run cpp_obstacle_avoidance cpp_obstacle_avoidance
 
 #### Python
 
-* To run `py_obstacle_avoidance` executable
+* To launch `py_obstacle_avoidance` executable
 
 ```bash
-ros2 run py_obstacle_avoidance py_obstacle_avoidance
+ros2 launch py_obstacle_avoidance controller.launch.py
 ```
 
 </br>
